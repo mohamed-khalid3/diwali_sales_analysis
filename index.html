@@ -3,74 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diwali Sales Analysis</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <title>Diwali Sales Analysis Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        header h1 {
+            color: #5a5a5a;
+        }
+        section {
+            padding: 20px 0;
+        }
+        section h2 {
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+            color: #007bff;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .key-findings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .finding-item {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 250px;
+        }
+        .finding-item h3 {
+            margin-top: 0;
+        }
+        blockquote {
+            background-color: #f8f9fa;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .github-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .github-link:hover {
+            background-color: #555;
+        }
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
 <body>
-    <header>
-        <h1>Diwali Sales Analysis</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Diwali Sales Analysis</h1>
+            <p>A data-driven project to uncover key purchasing trends and customer behaviors.</p>
+        </header>
 
-    <main>
+        <main>
+            <section>
+                <h2>Project Overview</h2>
+                <p>This project involves a detailed exploratory data analysis (EDA) of Diwali sales data. The goal was to identify which demographics—such as age, gender, state, and occupation—are the most significant buyers, helping businesses optimize their sales and marketing strategies for future events.</p>
+            </section>
 
-    <section>
-    <h2>Project Overview</h2>
-    <p>This project involves a detailed exploratory data analysis (EDA) of Diwali sales data to uncover key purchasing trends and customer behaviors. The goal was to identify which demographics—such as age, gender, state, and occupation—are the most significant buyers, helping businesses optimize their sales strategies.</p>
-</section>
+            <section>
+                <h2>Methodology & Tools</h2>
+                <p>The analysis was conducted using Python with a focus on several key libraries for data manipulation and visualization:</p>
+                <ul>
+                    <li><strong>Pandas & NumPy:</strong> Used for data cleaning, transformation, and numerical operations.</li>
+                    <li><strong>Matplotlib & Seaborn:</strong> Utilized to create insightful visualizations that highlight key trends.</li>
+                </ul>
+            </section>
 
-        <section>
-    <h2>Project Overview</h2>
-    <p>This project involves a detailed exploratory data analysis (EDA) of Diwali sales data to uncover key purchasing trends and customer behaviors. The goal was to identify which demographics—such as age, gender, state, and occupation—are the most significant buyers, helping businesses optimize their sales strategies.</p>
-</section>
+            <section>
+                <h2>Key Findings & Insights</h2>
+                <div class="key-findings">
+                    <div class="finding-item">
+                        <h3>Sales by Gender</h3>
+                        <p>The analysis revealed that the majority of sales were made by **women**, indicating a strong purchasing power in this demographic during the Diwali festival.</p>
+                        <img src="sales_by_gender.png" alt="Sales by Gender Chart">
+                    </div>
+                    <div class="finding-item">
+                        <h3>Sales by Age Group</h3>
+                        <p>Customers in the **26-35 age bracket** were the highest buyers, representing the core customer base for the products analyzed.</p>
+                        <img src="sales_by_age.png" alt="Sales by Age Group Chart">
+                    </div>
+                    <div class="finding-item">
+                        <h3>Top-Selling States</h3>
+                        <p>Geographically, **Uttar Pradesh, Maharashtra, and Karnataka** were identified as the top three states for sales, highlighting key markets for potential expansion.</p>
+                        <img src="sales_by_state.png" alt="Sales by State Chart">
+                    </div>
+                </div>
+            </section>
 
-        <section>
-    <h2>Data Cleaning & Preparation</h2>
-    <p>Before analysis, the dataset required cleaning. I used Python with Pandas to perform the following steps:</p>
-    <ul>
-        <li>Dropped irrelevant columns such as 'Status' and 'unnamed1'.</li>
-        <li>Handled and removed missing (null) values.</li>
-        <li>Corrected the data type of the 'Amount' column to ensure it was a numerical integer.</li>
-    </ul>
-    <p>This process ensured the data was clean and ready for accurate analysis.</p>
-</section>
-
-
-        <section>
-    <h2>Key Insights from the Analysis</h2>
-    
-    <h3>1. Sales by Gender</h3>
-    <p>The analysis revealed a significant purchasing trend by gender. As shown in the chart below, the majority of the sales were made by women.</p>
-    <img src="sales_by_gender.png" alt="Sales by Gender" style="width:100%; max-width:600px;">
-    <p><b>Insight:</b> This finding suggests that marketing efforts during Diwali should heavily target female consumers.</p>
-
-    <h3>2. Sales by Age Group</h3>
-    <p>Age group analysis showed that customers in the 26-35 age bracket were the highest buyers. They accounted for a significant portion of the total sales.</p>
-    <img src="sales_by_age.png" alt="Sales by Age Group" style="width:100%; max-width:600px;">
-    <p><b>Insight:</b> This demographic represents the core customer base and should be a primary focus for sales promotions.</p>
-
-    <h3>3. Top States by Sales</h3>
-    <p>Sales data broken down by state highlights the key geographic markets. The top-performing states were Uttar Pradesh, Maharashtra, and Karnataka.</p>
-    <img src="sales_by_state.png" alt="Sales by State" style="width:100%; max-width:600px;">
-    <p><b>Insight:</b> These states are key markets that should receive increased attention and resource allocation.</p>
-</section>
-
-        <section>
-    <h2>Conclusion</h2>
-    <p>The final analysis provides a clear picture of the ideal customer profile for Diwali sales:</p>
-    <blockquote>
-        Married women in the 26-35 age group from Uttar Pradesh, Maharashtra, and Karnataka, working in IT, Healthcare, and Aviation sectors, are most likely to buy products from the Food, Clothing, and Electronics categories.
-    </blockquote>
-</section>
-
-        <section>
-    <h2>View the Full Project</h2>
-    <p>For a complete look at the code and data behind this analysis, you can view the full Jupyter Notebook and data files on GitHub.</p>
-    <a href="https://github.com/mohamed-khalid3/portfolio/tree/main/Diwali%20Sales%20Analysis" target="_blank">View on GitHub</a>
-</section>
-        
+            <section>
+                <h2>Final Conclusion</h2>
+                <blockquote>
+                    Married women in the 26-35 age group from Uttar Pradesh, Maharashtra, and Karnataka, working in IT, Healthcare, and Aviation, are the most likely buyers of products from the Food, Clothing, and Electronics categories.
+                </blockquote>
+            </section>
         </main>
 
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
+        <footer>
+            <a href="https://github.com/mohamed-khalid3/diwali_sales_analysis" class="github-link" target="_blank">View Full Code on GitHub</a>
+            <p>&copy; 2025 Mohamed Khalid. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
