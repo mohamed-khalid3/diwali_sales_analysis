@@ -1,45 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Khalid - Portfolio</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diwali Sales Analysis — Mohamed Khalid</title>
+
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Plotly for interactive charts -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- DataTables for interactive table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <!-- tiny helper for CSV fetch/parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <meta name="description" content="Diwali Sales Analysis — interactive visualizations using Python-cleaned data, Plotly charts, and an interactive table.">
 </head>
 <body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <h1>Diwali Sales Analysis</h1>
+        <p class="sub">Interactive exploration of Diwali season sales — Mohamed Khalid</p>
+      </div>
+      <nav class="actions">
+        <a class="btn ghost" href="https://github.com/mohamed-khalid3/diwali_sales_analysis" target="_blank" rel="noopener">View Code on GitHub</a>
+        <a class="btn" href="#visuals">Explore Visuals</a>
+      </nav>
+    </div>
+  </header>
 
-    <header class="header">
-        <div class="header-content">
-            <h1 class="header-title">Mohamed Khalid</h1>
-            <p class="header-subtitle">Data Analyst & Web Developer</p>
+  <main class="wrap main-grid">
+    <!-- Left column: Narrative & Charts -->
+    <section class="panel narrative">
+      <h2>Project summary</h2>
+      <p>This project analyzes retail transactions for Diwali season to find high-value customer segments, top product categories, and regional patterns. Data was cleaned with Python (Pandas). Visualizations below are interactive — hover, zoom, and filter to explore.</p>
+
+      <div class="card kpis" aria-hidden="false">
+        <div class="kpi">
+          <div class="kpi-value" id="kpi-transactions">—</div>
+          <div class="kpi-label">Transactions</div>
         </div>
-    </header>
+        <div class="kpi">
+          <div class="kpi-value" id="kpi-revenue">—</div>
+          <div class="kpi-label">Total Revenue (₹)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value" id="kpi-top-age">—</div>
+          <div class="kpi-label">Top Age Group</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value" id="kpi-top-occu">—</div>
+          <div class="kpi-label">Top Occupation</div>
+        </div>
+      </div>
 
-    <main class="main-content">
-        <section class="section-projects">
-            <h2 class="section-title">My Projects</h2>
-            <ul class="project-list">
-                <li class="project-item active">
-                    <a href="https://mohamed-khalid3.github.io/diwali_sales_analysis/" target="_blank">
-                        <figure class="project-img">
-                            <img src="./assets/images/sales-analysis.jpg" alt="Diwali Sales Analysis" loading="lazy">
-                        </figure>
-                        <div class="project-details">
-                            <h3 class="project-title">Diwali Sales Analysis</h3>
-                            <p class="project-summary">Data analysis of sales trends to uncover key consumer insights.</p>
-                            <span class="project-category">Data Science</span>
-                        </div>
-                    </a>
-                </li>
+      <hr>
 
-                </ul>
-        </section>
-    </main>
+      <h3 id="visuals">Interactive visuals</h3>
 
-    <footer class="footer">
-        <p>&copy; 2024 Mohamed Khalid. All rights reserved.</p>
-    </footer>
+      <!-- Chart: Revenue by Product Category (bar) -->
+      <div class="card" id="chart-category" aria-label="Revenue by product category"></div>
 
+      <!-- Chart: Sales distribution by Age Group (pie) -->
+      <div class="grid-2">
+        <div class="card" id="chart-age" aria-label="Sales by age group"></div>
+        <div class="card" id="chart-state" aria-label="Revenue by state"></div>
+      </div>
+
+      <!-- Chart: Orders scatter / amount by customer (sample interactivity) -->
+      <div class="card" id="chart-scatter" style="height:360px"></div>
+
+      <hr>
+
+      <h3>Methodology</h3>
+      <ol>
+        <li>Data cleaning and normalization (remove nulls, unify state names, convert amounts to numeric).</li>
+        <li>Feature aggregation (revenue per category, per state, per age-group).</li>
+        <li>Interactive EDA using Plotly for charts and DataTables for the raw data table.</li>
+        <li>Business recommendations captured in README and the project report.</li>
+      </ol>
+
+      <p class="muted">Tip: use the controls above each chart (legend click / select tool) to filter data interactively.</p>
+    </section>
+
+    <!-- Right column: Data table & README -->
+    <aside class="panel sidebar">
+      <div class="card">
+        <h4>Data snapshot</h4>
+        <p>Explore the cleaned dataset below. You can search, sort, and page through transactions.</p>
+        <div class="table-wrap">
+          <table id="data-table" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>User_ID</th><th>Cust_name</th><th>Product_ID</th><th>Gender</th><th>Age_Group</th>
+                <th>Age</th><th>State</th><th>Occupation</th><th>Product_Category</th><th>Orders</th><th>Amount</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Quick filters</h4>
+        <label>State
+          <select id="filter-state"><option value="">All</option></select>
+        </label>
+        <label>Age Group
+          <select id="filter-age"><option value="">All</option></select>
+        </label>
+        <button id="reset-filters" class="btn ghost">Reset filters</button>
+      </div>
+
+      <div class="card">
+        <h4>Project files</h4>
+        <ul>
+          <li><a href="https://github.com/mohamed-khalid3/diwali_sales_analysis" target="_blank" rel="noopener">GitHub repository</a></li>
+          <li><a href="report.pdf" target="_blank">Download project report (PDF)</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap footer">
+    <small>© 2025 Mohamed Khalid • Built with Python, Pandas & Plotly • Hosted on GitHub Pages</small>
+  </footer>
+
+  <!-- App script loads data and draws charts -->
+  <script src="app.js"></script>
 </body>
 </html>
