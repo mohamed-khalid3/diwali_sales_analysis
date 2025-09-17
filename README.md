@@ -138,14 +138,14 @@ plt.show()
 ### Revenue Distribution Analysis
 *Professional charts showcasing sales patterns and customer behavior*
 
-| Chart Type | Analysis Focus | Key Insights |
-|------------|---------------|--------------|
-| 🍩 **Doughnut Chart** | Product Categories | Auto dominance (97%) |
-| 📊 **Bar Chart** | Geographic Performance | Andhra Pradesh leads |
-| 🥧 **Pie Chart** | Gender Demographics | Female majority (64%) |
-| 📈 **Bar Chart** | Age Group Segmentation | 26-35 peak segment |
-| 📊 **Horizontal Bar** | Professional Segments | Government sector top |
-| 🍩 **Doughnut Chart** | Regional Zones | Southern zone dominance |
+| Chart Type | Analysis Focus | Key Insights | Preview |
+|------------|---------------|--------------|---------|
+| 🍩 **Doughnut Chart** | Product Categories | Auto dominance (97%) | ![Product Categories](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/1.png) |
+| 📊 **Bar Chart** | Geographic Performance | Andhra Pradesh leads | ![Geographic Performance](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/2.png) |
+| 🥧 **Pie Chart** | Gender Demographics | Female majority (64%) | ![Gender Demographics](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/3.png) |
+| 📈 **Bar Chart** | Age Group Segmentation | 26-35 peak segment | ![Age Group Segmentation](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/4.png) |
+| 📊 **Horizontal Bar** | Professional Segments | Government sector top | ![Professional Segments](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/5.png) |
+| 🍩 **Doughnut Chart** | Regional Zones | Southern zone dominance | ![Regional Zones](https://github.com/mohamed-khalid3/diwali_sales_analysis/raw/main/assets/images/6.png) |
 
 </div>
 
