@@ -1,143 +1,503 @@
-<!doctype html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Diwali Sales Analysis — Mohamed Khalid</title>
-
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diwali Sales Analytics | Python Data Science Project | Mohamed Khalid</title>
+  <meta name="description" content="Professional Python-based Diwali Sales Analysis showcasing advanced data science skills, interactive visualizations, and actionable business insights">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- External CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- Plotly for interactive charts -->
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-  <!-- DataTables for interactive table -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-  <!-- tiny helper for CSV fetch/parsing -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-  <script src="assets/js/scripts.js"></script>
-
-  <meta name="description" content="Diwali Sales Analysis — interactive visualizations using Python-cleaned data, Plotly charts, and an interactive table.">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="brand">
-        <h1>Diwali Sales Analysis</h1>
-        <p class="sub">Interactive exploration of Diwali season sales — Mohamed Khalid</p>
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-brand" aria-label="MK Analytics Home">
+      <i class="fab fa-python"></i> MK Analytics
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode" onclick="toggleDarkMode()">
+      <i class="fas fa-moon"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#overview" aria-label="Project Overview">Project</a></li>
+      <li><a href="#insights" aria-label="Key Insights">Insights</a></li>
+      <li><a href="#visualizations" aria-label="Visualizations">Charts</a></li>
+      <li><a href="#contact" aria-label="Contact Information">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" role="banner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fab fa-python"></i>
+        Python Data Science Project
       </div>
-      <nav class="actions">
-        <a class="btn ghost" href="https://github.com/mohamed-khalid3/diwali_sales_analysis" target="_blank" rel="noopener">View Code on GitHub</a>
-        <a class="btn" href="#visuals">Explore Visuals</a>
-      </nav>
+      
+      <h1>Diwali Sales Analytics</h1>
+      <p class="hero-subtitle">
+        Comprehensive Python-based analysis revealing actionable insights from festive sales data using advanced data science techniques
+      </p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">36</span>
+          <span class="stat-label">Records Analyzed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">₹779K</span>
+          <span class="stat-label">Total Revenue</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">9</span>
+          <span class="stat-label">States Covered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">97%</span>
+          <span class="stat-label">Auto Category Share</span>
+        </div>
+      </div>
+      
+      <div class="cta-buttons">
+        <a href="#insights" class="btn btn-primary" role="button" aria-label="View Analysis">
+          <i class="fas fa-chart-line"></i>
+          View Analysis
+        </a>
+        <a href="https://github.com/mohamed-khalid3/diwali-sales-analysis" class="btn btn-outline" target="_blank" role="button" aria-label="View Code on GitHub">
+          <i class="fab fa-github"></i>
+          View Code
+        </a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap main-grid">
-    <!-- Left column: Narrative & Charts -->
-    <section class="panel narrative">
-      <h2>Project summary</h2>
-      <p>This project analyzes retail transactions for Diwali season to find high-value customer segments, top product categories, and regional patterns. Data was cleaned with Python (Pandas). Visualizations below are interactive — hover, zoom, and filter to explore.</p>
+  <!-- Project Overview -->
+  <section id="overview">
+    <div class="section-header">
+      <div class="section-badge">Project Overview</div>
+      <h2 class="section-title">Advanced Python Data Analytics</h2>
+      <p class="section-subtitle">
+        End-to-end data science project demonstrating proficiency in Python ecosystem, statistical analysis, and business intelligence
+      </p>
+    </div>
 
-      <div class="card kpis" aria-hidden="false">
-        <div class="kpi">
-          <div class="kpi-value" id="kpi-transactions">—</div>
-          <div class="kpi-label">Transactions</div>
+    <div class="project-overview">
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-database"></i>
         </div>
-        <div class="kpi">
-          <div class="kpi-value" id="kpi-revenue">—</div>
-          <div class="kpi-label">Total Revenue (₹)</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-value" id="kpi-top-age">—</div>
-          <div class="kpi-label">Top Age Group</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-value" id="kpi-top-occu">—</div>
-          <div class="kpi-label">Top Occupation</div>
-        </div>
+        <h3>Data Engineering</h3>
+        <p>Comprehensive data cleaning and preprocessing using Pandas, handling missing values, data type optimization, and feature engineering for analysis-ready datasets.</p>
       </div>
 
-      <hr>
-
-      <h3 id="visuals">Interactive visuals</h3>
-
-      <!-- Chart: Revenue by Product Category (bar) -->
-      <div class="card" id="chart-category" aria-label="Revenue by product category"></div>
-
-      <!-- Chart: Sales distribution by Age Group (pie) -->
-      <div class="grid-2">
-        <div class="card" id="chart-age" aria-label="Sales by age group"></div>
-        <div class="card" id="chart-state" aria-label="Revenue by state"></div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3>Statistical Analysis</h3>
+        <p>Advanced exploratory data analysis with statistical measures, correlation analysis, and hypothesis testing to uncover meaningful patterns and trends.</p>
       </div>
 
-      <!-- Chart: Orders scatter / amount by customer (sample interactivity) -->
-      <div class="card" id="chart-scatter" style="height:360px"></div>
+      <div class="overview-card">
+        <div class="overview-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>Business Intelligence</h3>
+        <p>Translation of complex data findings into actionable business recommendations with ROI projections and strategic implementation roadmaps.</p>
+      </div>
+    </div>
+  </section>
 
-      <hr>
+  <!-- Technology Stack -->
+  <section class="tech-stack">
+    <div class="section-header">
+      <div class="section-badge">Technology Stack</div>
+      <h2 class="section-title">Python Data Science Ecosystem</h2>
+      <p class="section-subtitle">
+        Leveraging industry-standard libraries and frameworks for professional data analysis
+      </p>
+    </div>
 
-      <h3>Methodology</h3>
-      <ol>
-        <li>Data cleaning and normalization (remove nulls, unify state names, convert amounts to numeric).</li>
-        <li>Feature aggregation (revenue per category, per state, per age-group).</li>
-        <li>Interactive EDA using Plotly for charts and DataTables for the raw data table.</li>
-        <li>Business recommendations captured in README and the project report.</li>
-      </ol>
-
-      <p class="muted">Tip: use the controls above each chart (legend click / select tool) to filter data interactively.</p>
-    </section>
-
-    <!-- Right column: Data table & README -->
-    <aside class="panel sidebar">
-      <div class="card">
-        <h4>Data snapshot</h4>
-        <p>Explore the cleaned dataset below. You can search, sort, and page through transactions.</p>
-        <div class="table-wrap">
-          <table id="data-table" class="display" style="width:100%">
-            <thead>
-              <tr>
-                <th>User_ID</th><th>Cust_name</th><th>Product_ID</th><th>Gender</th><th>Age_Group</th>
-                <th>Age</th><th>State</th><th>Occupation</th><th>Product_Category</th><th>Orders</th><th>Amount</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-icon python">
+          <i class="fab fa-python"></i>
+        </div>
+        <div class="tech-info">
+          <h4>Python 3.9+</h4>
+          <p>Core programming language with advanced features</p>
         </div>
       </div>
 
-      <div class="card">
-        <h4>Quick filters</h4>
-        <label>State
-          <select id="filter-state"><option value="">All</option></select>
-        </label>
-        <label>Age Group
-          <select id="filter-age"><option value="">All</option></select>
-        </label>
-        <button id="reset-filters" class="btn ghost">Reset filters</button>
+      <div class="tech-item">
+        <div class="tech-icon pandas">
+          <i class="fas fa-table"></i>
+        </div>
+        <div class="tech-info">
+          <h4>Pandas</h4>
+          <p>Data manipulation and analysis library</p>
+        </div>
       </div>
 
-      <div class="card">
-        <h4>Project files</h4>
-        <ul>
-          <li><a href="https://github.com/mohamed-khalid3/diwali_sales_analysis" target="_blank" rel="noopener">GitHub repository</a></li>
-          <li><a href="report.pdf" target="_blank">Download project report (PDF)</a></li>
-        </ul>
+      <div class="tech-item">
+        <div class="tech-icon numpy">
+          <i class="fas fa-square-root-alt"></i>
+        </div>
+        <div class="tech-info">
+          <h4>NumPy</h4>
+          <p>Numerical computing and array operations</p>
+        </div>
       </div>
-    </aside>
-  </main>
 
-  <footer class="wrap footer">
-    <small>© 2025 Mohamed Khalid • Built with Python, Pandas & Plotly • Hosted on GitHub Pages</small>
+      <div class="tech-item">
+        <div class="tech-icon matplotlib">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="tech-info">
+          <h4>Matplotlib</h4>
+          <p>Comprehensive plotting and visualization</p>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-icon seaborn">
+          <i class="fas fa-palette"></i>
+        </div>
+        <div class="tech-info">
+          <h4>Seaborn</h4>
+          <p>Statistical data visualization</p>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-icon jupyter">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="tech-info">
+          <h4>Jupyter Notebook</h4>
+          <p>Interactive development environment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Insights -->
+  <section id="insights" class="insights-container">
+    <div class="section-header">
+      <div class="section-badge" style="background: var(--secondary);">Key Findings</div>
+      <h2 class="section-title" style="color: var(--white);">Data-Driven Insights</h2>
+      <p class="section-subtitle" style="color: var(--gray-300);">
+        Strategic business intelligence extracted through advanced Python analytics
+      </p>
+    </div>
+
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4>Age Group Analysis</h4>
+        </div>
+        <div class="insight-value">46%</div>
+        <p class="insight-description">
+          26-35 age group represents highest revenue segment (₹355,177), ideal demographic for premium product positioning
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h4>Geographic Performance</h4>
+        </div>
+        <div class="insight-value">48%</div>
+        <p class="insight-description">
+          Andhra Pradesh leads with ₹377,022 revenue, indicating strong regional market penetration and growth potential
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h4>Professional Segments</h4>
+        </div>
+        <div class="insight-value">18%</div>
+        <p class="insight-description">
+          Government sector professionals show highest individual spending (₹141,672), valuable for B2B partnerships
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <h4>Regional Zones</h4>
+        </div>
+        <div class="insight-value">60%</div>
+        <p class="insight-description">
+          Southern zone dominates with ₹471,346 revenue, representing strategic market concentration and expansion opportunity
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <h4>Product Category Dominance</h4>
+        </div>
+        <div class="insight-value">97%</div>
+        <p class="insight-description">
+          Auto products drive overwhelming market share with ₹755,567 in revenue, indicating strong category focus and customer preference
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon">
+            <i class="fas fa-venus"></i>
+          </div>
+          <h4>Gender Demographics</h4>
+        </div>
+        <div class="insight-value">64%</div>
+        <p class="insight-description">
+          Female customers contribute majority of sales (₹495,389), presenting targeted marketing opportunities for gender-specific campaigns
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visualizations -->
+  <section id="visualizations" class="charts-section">
+    <div class="section-header">
+      <div class="section-badge">Interactive Visualizations</div>
+      <h2 class="section-title">Advanced Data Visualizations</h2>
+      <p class="section-subtitle">
+        Professional charts and graphs built with Chart.js and Python Matplotlib/Seaborn for comprehensive data storytelling
+      </p>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Revenue by Product Category</h3>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="categoryChart" style="display: none;"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Geographic Distribution</h3>
+          <select id="stateFilter" onchange="updateStateChart()" aria-label="Filter states">
+            <option value="all">All States</option>
+            <option value="top3">Top 3 States</option>
+          </select>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="stateChart" style="display: none;"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Customer Demographics</h3>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="genderChart" style="display: none;"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Age Group Analysis</h3>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="ageChart" style="display: none;"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Professional Segments</h3>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="occupationChart" style="display: none;"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3 class="chart-title">Regional Performance</h3>
+        </div>
+        <div class="chart-wrapper">
+          <div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>
+          <canvas id="zoneChart" style="display: none;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Preview -->
+  <section class="code-preview">
+    <div class="code-header">
+      <div class="code-dots">
+        <div class="code-dot red"></div>
+        <div class="code-dot yellow"></div>
+        <div class="code-dot green"></div>
+      </div>
+      <div class="code-title">diwali_sales_analysis.py</div>
+    </div>
+    <div class="code-content">
+<span class="code-comment"># Diwali Sales Data Analysis</span>
+<span class="code-keyword">import</span> <span class="code-function">pandas</span> <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> <span class="code-function">numpy</span> <span class="code-keyword">as</span> np
+<span class="code-keyword">import</span> <span class="code-function">matplotlib.pyplot</span> <span class="code-keyword">as</span> plt
+<span class="code-keyword">import</span> <span class="code-function">seaborn</span> <span class="code-keyword">as</span> sns
+
+<span class="code-comment"># Load and clean data</span>
+df = pd.<span class="code-function">read_csv</span>(<span class="code-string">'Diwali Sales Data.csv'</span>)
+df.<span class="code-function">dropna</span>(subset=[<span class="code-string">'Amount'</span>], inplace=<span class="code-keyword">True</span>)
+
+<span class="code-comment"># Advanced analysis - Revenue by category</span>
+category_analysis = df.<span class="code-function">groupby</span>(<span class="code-string">'Product_Category'</span>)[<span class="code-string">'Amount'</span>].<span class="code-function">sum</span>().<span class="code-function">sort_values</span>(ascending=<span class="code-keyword">False</span>)
+
+<span class="code-comment"># Statistical insights</span>
+print(<span class="code-string">f"Total Revenue: ₹{df['Amount'].sum():,.2f}"</span>)
+print(<span class="code-string">f"Average Order Value: ₹{df['Amount'].mean():,.2f}"</span>)
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="section-header">
+      <div class="section-badge" style="background: var(--secondary);">Technical Proficiency</div>
+      <h2 class="section-title" style="color: var(--white);">Data Science Expertise</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">
+        Demonstrated proficiency levels in cutting-edge data science technologies and methodologies
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-item">
+        <span class="skill-name">Python Programming & Libraries</span>
+        <span class="skill-percentage">95%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="95%"></div>
+      </div>
+
+      <div class="skill-item">
+        <span class="skill-name">Data Analysis & Pandas</span>
+        <span class="skill-percentage">92%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="92%"></div>
+      </div>
+
+      <div class="skill-item">
+        <span class="skill-name">Data Visualization (Matplotlib, Seaborn)</span>
+        <span class="skill-percentage">90%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="90%"></div>
+      </div>
+
+      <div class="skill-item">
+        <span class="skill-name">Statistical Analysis & NumPy</span>
+        <span class="skill-percentage">88%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="88%"></div>
+      </div>
+
+      <div class="skill-item">
+        <span class="skill-name">Business Intelligence & Insights</span>
+        <span class="skill-percentage">94%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="94%"></div>
+      </div>
+
+      <div class="skill-item">
+        <span class="skill-name">Data Cleaning & Preprocessing</span>
+        <span class="skill-percentage">96%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="96%"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="section-header">
+      <div class="section-badge">Get In Touch</div>
+      <h2 class="section-title">Let's Collaborate</h2>
+      <p class="section-subtitle">
+        Ready to leverage data science for your next project? Let's discuss how we can work together to unlock insights from your data
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <a href="mailto:khannihad1@gmail.com" class="contact-item" aria-label="Email Mohamed Khalid">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h4>Email</h4>
+        <p>khannihad1@gmail.com</p>
+      </a>
+
+      <a href="https://linkedin.com/in/mohamed-khalid-data" class="contact-item" target="_blank" aria-label="Connect on LinkedIn">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <h4>LinkedIn</h4>
+        <p>Professional Network</p>
+      </a>
+
+      <a href="https://github.com/mohamed-khalid3" class="contact-item" target="_blank" aria-label="View GitHub Profile">
+        <div class="contact-icon">
+          <i class="fab fa-github"></i>
+        </div>
+        <h4>GitHub</h4>
+        <p>Code Repository</p>
+      </a>
+
+      <a href="https://mohamed-khalid3.github.io/portfolio/" class="contact-item" target="_blank" aria-label="Visit Portfolio">
+        <div class="contact-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h4>Portfolio</h4>
+        <p>More Projects</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; 2024 Mohamed Khalid | Data Science Portfolio | Built with Python & Modern Web Technologies</p>
   </footer>
 
-  <!-- App script loads data and draws charts -->
-  <script src="app.js"></script>
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
